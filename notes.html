@@ -1,0 +1,56 @@
+//let url = `http://api.giphy.com/v1/gifs/random?api_key=cSbbqWdJnhwMO0dOyMTQuOwXp9GQGODs`;
+//    let url = `http://api.giphy.com/v1/gifs/search?q=${search}&api_key=cSbbqWdJnhwMO0dOyMTQuOwXp9GQGODs&limit=${PAGE_SIZE}&offset=${offset}`;
+///  let url = `http://api.giphy.com/v1/gifs/translate?api_key=cSbbqWdJnhwMO0dOyMTQuOwXp9GQGODs&s=${search}`;
+
+http://api.giphy.com/v1/gifs/search?q=happy&api_key=cSbbqWdJnhwMO0dOyMTQuOwXp9GQGODs&limit=5&offset=0
+
+<!--DOM Manipulation:
+
+<html>
+    <body>
+        <div><input type="text" id="q"></div>
+        <div><button onclick="handleClick()">Click Me</button></div>
+        <div id="outputArea"></div>
+<script>
+function handleClick(){
+const qEle = document.getElementById("q") //<input type=“text” id=“q”>
+const q = qEle.value;
+const outputAreaEle = document.getElementById("outputArea")
+outputAreaEle.innerHTML += "<h2>" + q + "</h2>"
+}
+</script>
+    </body>
+</html>
+-->
+Send using an asynchronous effect to giphy and it will return a JSON
+
+
+ASYNC Function Call:
+
+<html>
+    <body>
+        <div><input type="text" id="q"></div>
+        <div><button onclick="handleClick()">Click Me</button></div>
+        <div id="outputArea"></div>
+        <script>
+            function handleClick() {
+                const qEle = document.getElementById("q") //<input type="text" id="q">
+                const q = qEle.value;
+                const outputAreaEle = document.getElementById("outputArea") //         <div id="outputArea">
+                outputAreaEle.innerHTML += "<h2>" + q + "</h2>"
+one();
+two();
+            }
+async function one() {
+console.log("one");
+}
+async function two() {
+console.log("two");
+}
+        </script>
+    </body>
+</html>
+
+fetch(‘url’).then((res)=> {
+Console.log(``);
+});
