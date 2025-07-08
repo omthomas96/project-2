@@ -1,18 +1,32 @@
-function handleClick() {
-  const qEle = document.getElementById("q"); //<input type="text" id="q">
-  const q = qEle.value;
-  const outputAreaEle = document.getElementById("outputArea"); //         <div id="outputArea">
-  outputAreaEle.innerHTML += "<h2>" + q + "</h2>";
-  one();
-  two();
-}
-async function one() {
-  console.log("one");
-}
-async function two() {
-  console.log("two");
+const API_KEY = 'DNTMN9dKFRLsqkl8nNp3gUFMdXmi6oLW';
+
+// Function to fetch GIFs from Giphy API
+async function fetchGifs(query) {
+    const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${encodeURIComponent(query)}&limit=10&rating=g`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    return data.data; // Array of GIF objects
 }
 
-fetch(`http://api.giphy.com/v1/gifs/random?api_key=DNTMN9dKFRLsqkl8nNp3gUFMdXmi6oLW`).then((res)=> {
-Console.log(``);
+// Function to display GIFs in the DOM
+function displayGifs(gifs) {
+    const container = document.getElementById('giphy-results');
+    container.innerHTML = '';
+    gifs.forEach(gif => {
+        const img = document.createElement('img');
+        img.src = gif.images.fixed_height.url;
+        img.alt = gif.title;
+        container.appendChild(img);
+    });
+}
+
+// Handle form submission
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('giphy-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const query = document.getElementById('giphy-query').value;
+        const gifs = await fetchGifs(query);
+        displayGifs(gifs);
+    });
 });
