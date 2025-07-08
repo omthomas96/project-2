@@ -14,7 +14,7 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: Lexend;
 }
 
 .topnav a:hover {
@@ -28,7 +28,7 @@ body {
 }
 
 h1 {
-  font-family: "Courier New", Courier, monospace;
+  font-family: Lexend;
   color: #3d9474c1;
   margin: 20px;
 }
@@ -68,3 +68,4 @@ form.example::after {
   clear: both;
   display: table;
 }
+
