@@ -1,32 +1,32 @@
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const resultsDiv = document.getElementById('results');
+
 const API_KEY = 'DNTMN9dKFRLsqkl8nNp3gUFMdXmi6oLW';
+const BASE_API_URL = 'http://api.giphy.com/v1/gifs/search';
 
-// fetch GIFs from Giphy API
-async function fetchGifs(query) {
-    const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${userInput}&limit=10&rating=g`;
-    const response = await fetch(endpoint);
-    const data = await response.json();
-    return data.data; 
-}
-
-// display GIFs in the DOM
-function displayGifs(gifs) {
-    const container = document.getElementById('giphy-results');
-    container.innerHTML = '';
-    gifs.forEach(gif => {
-        const img = document.createElement('img');
-        img.src = gif.images.fixed_height.url;
-        img.alt = gif.title;
-        container.appendChild(img);
-    });
-}
-
-// form submission
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('giphy-form');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const query = document.getElementById('giphy-query').value;
-        const gifs = await fetchGifs(query);
-        displayGifs(gifs);
-    });
+searchButton.addEventListener('click', performSearch);
+searchInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
 });
+
+    try {
+        const response = fetch(`${BASE_API_URL}?q=${searchTerm}&apiKey=${API_KEY}&limit=10&offset=0`);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        
+        if (data.results && data.results.length > 0) {
+            resultsDiv.innerHTML = data.results.map(item => `<p>${item.title}</p>`).join('');
+        } else {
+            resultsDiv.innerHTML = '<p>No results found.</p>';
+        }
+
+    } catch (error) {
+        resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+        console.error('Error fetching data:', error);
+    }

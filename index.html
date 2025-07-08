@@ -21,10 +21,15 @@
       <a href="#about">About</a>
     </div>
     <h1>Giphy Search Engine</h1>
-    <form class="example" action="action_page.php">
-      <input type="text" id="q" placeholder="Search.." name="search" />
-      <button onclick="displayGifs(gifs)"><i class="fa fa-search"></i></button>
-      <div id="outputArea"></div>
+    <form class="form-search">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search.."
+        name="search"
+      />
+      <button id="searchButton"><i class="fa fa-search"></i></button>
+      <div id="results"></div>
     </form>
     <script src="giphy.js"></script>
   </body>
