@@ -46,3 +46,6 @@ function displayResults(response) {
     resultsDiv.appendChild(img);
   }
 }
+
+// Pagination Function
+
