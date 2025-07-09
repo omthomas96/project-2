@@ -29,7 +29,7 @@ async function performSearch(event) {
 // Fetch Function
 async function fetchData(data) {
   const fetchData = encodeURIComponent(data);
-  const url = `${API_ENDPOINT}?q=${fetchData}&api_key=${API_KEY}&limit=10&offset=0&rating=g`;
+  const url = `${API_ENDPOINT}?q=${fetchData}&api_key=${API_KEY}&limit=20&offset=0&rating=g`;
 
   const response = await fetch(url);
   const json = await response.json();
