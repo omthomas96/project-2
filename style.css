@@ -37,7 +37,7 @@ h1 {
   box-sizing: border-box;
 }
 
-form.form-search input[type="text"] {
+div.search input[type="text"] {
   margin-left: 20px;
   padding: 10px;
   font-size: 17px;
@@ -47,7 +47,7 @@ form.form-search input[type="text"] {
   background: #f1f1f1;
 }
 
-form.form-search button {
+div.search button {
   float: left;
   width: 10%;
   padding: 10px;
@@ -59,11 +59,11 @@ form.form-search button {
   cursor: pointer;
 }
 
-form.form-search button:hover {
+div.search button:hover {
   background: #ddd;
 }
 
-form.form-search::after {
+div.search::after {
   content: "";
   clear: both;
   display: table;
