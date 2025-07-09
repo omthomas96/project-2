@@ -17,29 +17,6 @@ let rating = "g";
 let totalCount = 0;
 let lastSearchTerm = "";
 
-// Pagination Buttons
-function setNavButtons() {
-  if (offset > 0) document.getElementById("prev").disabled = false;
-  else document.getElementById("prev").disabled = true;
-  if (totalCount > 0 && offset >= totalCount + limit)
-    document.getElementById("next").disabled = false;
-  else document.getElementById("next").disabled = true;
-}
-
-function handleClickPrev() {
-  if (offset >= limit) {
-    offset -= limit;
-    handleClickSearch();
-  }
-}
-
-function handleClickNext() {
-  if (offset <= totalCount + limit) {
-    offset += limit;
-    handleClickSearch();
-  }
-}
-
 //Call Function
 async function performSearch(event) {
   event.preventDefault();
@@ -76,3 +53,43 @@ function displayResults(response) {
 }
 
 // Pagination Function
+function setNavButtons() {
+  if (offset > 0) document.getElementById("prev").disabled = false;
+  else document.getElementById("prev").disabled = true;
+  if (totalCount > 0 && offset >= totalCount + limit)
+    document.getElementById("next").disabled = false;
+  else document.getElementById("next").disabled = true;
+}
+
+function handleClickPrev() {
+  if (offset >= limit) {
+    offset -= limit;
+    performSearch();
+  }
+}
+
+function handleClickNext() {
+  if (offset <= totalCount + limit) {
+    offset += limit;
+    performSearch();
+  }
+}
+
+function handleClickRandom() {
+  console.log("handleClickRandom called");
+  offset = 0;
+  totalCount = 0;
+  setNavButtons();
+  const elementOutputArea = document.getElementById("outputArea");
+}
+function handleClickClear() {
+  searchInput.value = "";
+  resultsDiv.innerHTML = "";
+  offset = 0;
+  totalCount = 0;
+  setNavButtons();
+}
+document.getElementById("prev").addEventListener("click", handleClickPrev);
+document.getElementById("next").addEventListener("click", handleClickNext);
+document.getElementById("random").addEventListener("click", handleClickRandom);
+document.getElementById("clear").addEventListener("click", handleClickClear);
