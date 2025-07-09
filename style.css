@@ -43,13 +43,37 @@ form.search input[type="text"] {
   font-size: 17px;
   border: 1px solid grey;
   float: left;
-  width: 80%;
+  width: 60%;
   background: #f1f1f1;
 }
 
 form.search button {
   float: left;
   width: 10%;
+  padding: 10px;
+  background: #3d9474c1;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search button.prev {
+  float: left;
+  width: 5%;
+  padding: 10px;
+  background: #3d9474c1;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search button.next {
+  float: left;
+  width: 5%;
   padding: 10px;
   background: #3d9474c1;
   color: white;
