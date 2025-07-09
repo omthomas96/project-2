@@ -14,20 +14,53 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="topnav">
+    <nav
+      class="topnav navbar navbar-expand-lg navbar-primary bg-primary fixed-top"
+    >
       <a class="active" href="#home">Home</a>
       <a href="#news">News</a>
       <a href="#contact">Contact</a>
       <a href="#about">About</a>
-    </div>
-    <main>
+    </nav>
+    <main
+      class="container d-flex flex-column align-items-center justify-content-center"
+    >
       <h1>Giphy Search Engine</h1>
-      <form class="search">
-        <input type="text" id="searchInput" placeholder="Search.." />
-        <button id="searchButton"><i class="fa fa-search"></i></button>
+      <form class="search d-flex justify-content-center mb-4 w-100 flex-wrap">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search.."
+          class="flex-grow-1"
+        />
+        <button id="searchButton" class="btn btn-primary">
+          <i class="fa fa-search"></i>
+        </button>
+        <button
+          type="button"
+          class="btn"
+          id="prev"
+          onclick="handleClickPrev()"
+          disabled
+        >
+          &lt;
+        </button>
+
+        <button
+          type="button"
+          class="btn"
+          id="next"
+          onclick="handleClickNext()"
+          disabled
+        >
+          &gt;
+        </button>
       </form>
       <div class="results-container">
-        <div class="results" id="results">
+        <div
+          class="results row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 w-100"
+          id="results"
+        >
           <!-- Search results will be displayed here -->
         </div>
       </div>
