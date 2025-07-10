@@ -96,23 +96,23 @@ form.search::after {
 .results-container {
   display: inline-grid;
   grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto auto;
-flex-direction: column; 
-align-items: center;
+  grid-template-rows: auto auto auto auto;
+  flex-direction: column;
+  align-items: center;
   grid-gap: 10px;
   padding: 10px;
 }
 
 .results-container > div {
-padding: 20px;
+  padding: 20px;
   font-size: 30px;
   text-align: left;
 }
 
 @media (max-width: 320px) {
-nav .container,
-header container {
-flex-direction: column;
-text-align: center;
-}
+  nav .container,
+  header container {
+    flex-direction: column;
+    text-align: center;
+  }
 }

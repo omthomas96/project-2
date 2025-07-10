@@ -1,6 +1,8 @@
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const resultsDiv = document.getElementById("results");
+const prevButton = document.getElementById("prev");
+const nextButton = document.getElementById("next");
 
 searchButton.addEventListener("click", performSearch);
 searchInput.addEventListener("keypress", (event) => {
@@ -8,6 +10,8 @@ searchInput.addEventListener("keypress", (event) => {
     performSearch();
   }
 });
+prevButton.addEventListener("click", handleClickPrev);
+nextButton.addEventListener("click", handleClickNext);
 
 const API_KEY = "DNTMN9dKFRLsqkl8nNp3gUFMdXmi6oLW";
 const API_ENDPOINT = "http://api.giphy.com/v1/gifs/search";
@@ -67,15 +71,13 @@ function setNavButtons() {
 function handleClickPrev() {
   if (offset >= limit) {
     offset -= limit;
-    performSearch();
+    performSearch(new Event('click'));
   }
 }
 
 function handleClickNext() {
   if (offset <= (totalCount + limit)) {
     offset += limit;
-    performSearch();
+    performSearch(new Event('click'));
   }
 }
-document.getElementById("prev").addEventListener("click", handleClickPrev);
-document.getElementById("next").addEventListener("click", handleClickNext);
