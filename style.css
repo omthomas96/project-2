@@ -104,15 +104,35 @@ form.search::after {
 }
 
 .results-container > div {
-  padding: 20px;
   font-size: 30px;
   text-align: left;
 }
+.results-container img {
+  height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+}
 
-@media (max-width: 320px) {
-  nav .container,
-  header container {
-    flex-direction: column;
-    text-align: center;
+@media screen and (min-width: 1020px) {
+  .results-container img {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .results-container img {
+    width: 33.33%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .results-container img {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .results-container img {
+    width: 100%;
   }
 }
