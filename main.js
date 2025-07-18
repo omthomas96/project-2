@@ -1,3 +1,4 @@
+const randomImage = document.getElementById("randomImage");
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const resultsDiv = document.getElementById("results");
@@ -20,6 +21,18 @@ let offset = 0;
 let rating = "g";
 let totalCount = 0;
 let lastSearchTerm = "";
+
+// Random Image Function
+async function fetchRandomImage() {
+  const url = `http://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&rating=${rating}`;
+  console.log(`Fetching random image from: ${url}`);
+  const response = await fetch(url);
+  const json = await response.json();
+  const imageUrl = json.data.images.fixed_height.url;
+  randomImage.src = imageUrl;
+  randomImage.alt = json.data.title || "Random Giphy Image";
+}
+window.addEventListener("DOMContentLoaded", fetchRandomImage);
 
 //Call Function
 async function performSearch(event) {
