@@ -7,7 +7,7 @@ const nextButton = document.getElementById("next");
 searchButton.addEventListener("click", performSearch);
 searchInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
-    performSearch();
+    performSearch(event);
   }
 });
 prevButton.addEventListener("click", handleClickPrev);
@@ -39,6 +39,7 @@ async function performSearch(event) {
 async function fetchData(data) {
   const fetchData = encodeURIComponent(data);
   const url = `${API_ENDPOINT}?q=${fetchData}&api_key=${API_KEY}&limit=${limit}&offset=${offset}&rating=${rating}`;
+  console.log(`Fetching data from: ${url}`);
   const response = await fetch(url);
   const json = await response.json();
   return json.data;
